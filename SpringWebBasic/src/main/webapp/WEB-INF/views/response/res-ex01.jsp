@@ -12,6 +12,8 @@
 	
 	<a href="/basic/response/test?age=30">테스트1 페이지로~</a>
 	
+	<a href="/basic/response/test3">테스트3 페이지로~</a>
+	
 	<hr>
 	
 	<form action="/basic/response/test2">
