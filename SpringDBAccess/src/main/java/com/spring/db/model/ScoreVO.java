@@ -1,17 +1,20 @@
 package com.spring.db.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Getter
 @Setter
 @ToString
-
+@NoArgsConstructor
+@AllArgsConstructor
 public class ScoreVO {
 	
-	private int stu_id;
-	private String stu_name;
+	private int stuId;
+	private String stuName;
 	private int kor;
 	private int eng;
 	private int math;

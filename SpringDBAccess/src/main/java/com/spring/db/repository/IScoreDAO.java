@@ -10,7 +10,7 @@ public interface IScoreDAO {
 	void insertScore(ScoreVO co);
 		
 	//점수 전체 조회 기능
-	List<ScoreVO> selectScores();
+	List<ScoreVO> selectAllScores();
 		
 	//점수 삭제 기능
 	void deleteScore(int num);
