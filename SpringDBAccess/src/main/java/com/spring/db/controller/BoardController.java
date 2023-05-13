@@ -75,7 +75,7 @@ public class BoardController {
     public String modify(BoardVO vo, Model model){
     	sv.updateArticle(vo);
     	model.addAttribute("article",vo); 
-    	return "redirect:/board/content";
+    	return "board/content";
     }
 
     //modify.jsp를 생성해서 form태그에 사용자가 처음에 작성했던 내용이 드러나도록
