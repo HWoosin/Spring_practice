@@ -31,7 +31,7 @@ public class BoardController {
     public String write(BoardVO vo) {
     	System.out.println("글 등록 처리요청 POST!");
     	sv.insertArticle(vo);
-    	return "board/list";
+    	return "redirect:/board/list";
     }
 
     //글 목록 화면 요청
@@ -41,16 +41,9 @@ public class BoardController {
     //글 목록을 table을 사용해서 간단히 만들어 주세요. (글 번호는 인덱스 이용해서 달아주세요.)
     @GetMapping("/list")
 	public void list(Model model) {
-		System.out.println("글 목록 보기 요청!");
+    	System.out.println("글 목록 보기 요청!");
 		model.addAttribute("aritcleList", sv.getArticles());
-//		return "board/list";
 	}
-//  @PostMapping("/list")
-//	public String list(Model model) {
-//		System.out.println("글 목록 보기 요청!");
-//		model.addAttribute("aritcleList", sv.getArticles());
-//		return "board/list";
-//	}
 
     //글 내용 상세보기 요청 처리 메서드
     //메서드 이름 -> content, 요청 url -> /content
