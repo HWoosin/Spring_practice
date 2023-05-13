@@ -29,7 +29,7 @@ public class BoardService implements IBoardService {
 	@Override
 	public BoardVO getArticle(int bno) {
 		System.out.println("게시물 상세보기");
-		return dao.getArticle(bno);
+		return dao.getArticle(bno); 
 	}
 
 	@Override
