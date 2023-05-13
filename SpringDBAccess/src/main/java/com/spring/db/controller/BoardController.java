@@ -55,7 +55,7 @@ public class BoardController {
     public void content(int boardNo, Model model) {
     	System.out.println("글 상세 보기 요청!");
     	BoardVO vo = sv.getArticle(boardNo);
-    	model.addAttribute("article",vo);
+    	model.addAttribute("article",vo); 
     	
     }
 
