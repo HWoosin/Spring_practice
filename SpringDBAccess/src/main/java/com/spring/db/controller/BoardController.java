@@ -51,7 +51,7 @@ public class BoardController {
     //content.jsp에서 해당 글 정보를 모두 출력해 주세요. (글 번호도 같이)
     
     
-    @GetMapping("content")
+    @GetMapping("/content")
     public void content(int boardNo, Model model) {
     	System.out.println("글 상세 보기 요청!");
     	BoardVO vo = sv.getArticle(boardNo);
@@ -71,4 +71,15 @@ public class BoardController {
     
 
     //삭제는 알아서 작성해 주세요. (삭제 클릭하면 해당 글이 삭제될 수 있도록)
+    
+    @GetMapping("/delete")
+    public String delete(int boardNo) {
+    	System.out.println("글 삭제!");
+    	sv.deleteArticle(boardNo);
+    	return "redirect:/board/list";
+    }
 }
+
+
+
+

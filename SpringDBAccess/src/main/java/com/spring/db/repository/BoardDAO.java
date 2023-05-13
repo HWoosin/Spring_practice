@@ -61,9 +61,9 @@ public class BoardDAO implements IBoardDAO {
 	}
 
 	@Override
-	public void delteArticle(int bno) {
-		// TODO Auto-generated method stub
-
+	public void deleteArticle(int bno) {
+		String sql = "Delete from jdbc_board where board_no = ?";
+		template.update(sql,bno);
 	}
 
 	@Override

@@ -13,7 +13,7 @@ public interface IBoardService {
 	//게시글 상세보기
 	BoardVO getArticle(int bno);
 	//게시글 삭제
-	void delteArticle(int bno);
+	void deleteArticle(int bno);
 	//게시글 수정
 	void updateArticle(BoardVO vo);
 }
