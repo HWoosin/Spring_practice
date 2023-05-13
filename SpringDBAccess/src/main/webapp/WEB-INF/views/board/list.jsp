@@ -22,7 +22,7 @@
 			<tr>
 				<td>${article.boardNo}</td>
 				<td><a href="<c:url value='/board/content?boardNo=${article.boardNo}'/>">${article.title}</a></td>
-				<td>${article.writer }</td>
+				<td>${article.writer}</td>
 				<td><a href="<c:url value='/board/delete?boardNo=${article.boardNo}'/>">[삭제]</a></td>
 			</tr>
 		</c:forEach>

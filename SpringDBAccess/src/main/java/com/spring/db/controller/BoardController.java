@@ -40,9 +40,10 @@ public class BoardController {
     //브라우저에 글 목록을 띄워 주시면 되겠습니다.
     //글 목록을 table을 사용해서 간단히 만들어 주세요. (글 번호는 인덱스 이용해서 달아주세요.)
     @GetMapping("/list")
-	public void list(Model model) {
+	public String list(Model model) {
     	System.out.println("글 목록 보기 요청!");
 		model.addAttribute("aritcleList", sv.getArticles());
+		return "board/list";
 	}
 
     //글 내용 상세보기 요청 처리 메서드
@@ -62,7 +63,20 @@ public class BoardController {
     //글 수정하기 화면으로 이동 요청
     //메서드 이름은 modify(), url: /board/modify -> GET
     //수정하고자 하는 글 정보를 모두 받아와서 modify.jsp로 보내 주세요.(글 번호 같이)
-    
+    @GetMapping("/modify")
+    public String modify(int boardNo, Model model){
+    	BoardVO vo = sv.getArticle(boardNo);
+    	System.out.println("글 수정페이지에서 글 가져옴 ");
+    	model.addAttribute("article",vo); 
+    	return "board/modify";
+
+    }
+    @PostMapping("/modify")
+    public String modify(BoardVO vo, Model model){
+    	sv.updateArticle(vo);
+    	model.addAttribute("article",vo); 
+    	return "redirect:/board/content";
+    }
 
     //modify.jsp를 생성해서 form태그에 사용자가 처음에 작성했던 내용이 드러나도록
     //배치해 주시고 수정을 받아 주세요.

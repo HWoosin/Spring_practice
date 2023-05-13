@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,8 +16,8 @@
 	        # 내용: <textarea rows="5" readonly>${article.content}</textarea>
 	    </p>
     
-    <a href="#">글 목록 보기</a>
-    <a href="#">글 수정 하기</a>
+    <a href="<c:url value='/board/list'/>">글 목록 보기</a>
+    <a href="<c:url value='/board/modify?boardNo=${article.boardNo}'/>">글 수정 하기</a>
 
 </body>
 </html>

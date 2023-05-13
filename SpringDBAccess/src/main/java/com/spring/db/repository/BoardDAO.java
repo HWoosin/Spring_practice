@@ -68,8 +68,9 @@ public class BoardDAO implements IBoardDAO {
 
 	@Override
 	public void updateArticle(BoardVO vo) {
-		// TODO Auto-generated method stub
-
+		String sql = "Update jdbc_board set title = ?, content = ? where board_no = ?";
+		template.update(sql,vo.getTitle(),vo.getContent(),vo.getBoardNo());
+		
 	}
 
 }

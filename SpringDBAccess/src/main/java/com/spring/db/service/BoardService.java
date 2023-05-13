@@ -40,8 +40,7 @@ public class BoardService implements IBoardService {
 
 	@Override
 	public void updateArticle(BoardVO vo) {
-		// TODO Auto-generated method stub
-
+		dao.updateArticle(vo);
 	}
 
 }
