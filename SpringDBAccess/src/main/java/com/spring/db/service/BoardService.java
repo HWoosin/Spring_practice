@@ -22,14 +22,13 @@ public class BoardService implements IBoardService {
 
 	@Override
 	public List<BoardVO> getArticles() {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("게시물 가져옴");		
+		return dao.getArticles();
 	}
 
 	@Override
 	public BoardVO getArticle(int bno) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.getArticle(bno);
 	}
 
 	@Override

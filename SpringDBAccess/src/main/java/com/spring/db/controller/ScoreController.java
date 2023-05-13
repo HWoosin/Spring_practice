@@ -47,7 +47,7 @@ public class ScoreController {
 		System.out.println("/score/register: POST");
 		System.out.println("vo: " +vo);
 		service.insertScore(vo);
-		return "/score/write-result";
+		return "score/write-result";
 	}
 	
 	//점수 전체 초회를 처리하는 요청 메서드
