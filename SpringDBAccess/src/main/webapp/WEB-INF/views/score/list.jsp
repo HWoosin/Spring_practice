@@ -28,7 +28,7 @@
  	<script>
  		const msg = '${msg}';
  		if(msg === 'delmessage'){
- 			alert('${stu.stuId} + 번이 삭제되었습니다.');
+ 			alert('삭제되었습니다.');
  		}
  	</script>
 
