@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -22,7 +23,8 @@ public class FreeBoardController {
 	public void freeList(Model model) {
 		model.addAttribute("boardList", service.getList());
 	}
-	//글 쓰기 페이지 열어주는 메서드
+	
+	//글쓰기 페이지 열어주는 메서드
 	@GetMapping("/regist")
 	public String regist() {
 		return "freeboard/freeRegist";
@@ -35,26 +37,33 @@ public class FreeBoardController {
 		return "redirect:/freeboard/freeList";
 	}
 	
-	//글 상세보기
+	//글 상세 보기 처리
 	@GetMapping("/content")
-	public void content(int bno, Model model) {
-		model.addAttribute("boardcontent",service.getContent(bno));
-		
+	public String getContent(int bno, Model model) {
+		model.addAttribute("article", service.getContent(bno));
+		return "freeboard/freeDetail";
 	}
 	
-	//글 수정
+	//글 수정 페이지 이동 처리
 	@PostMapping("/modify")
-	public String modify(FreeBoardVO vo) {
-		service.update(vo);
-		return "redirect:/freeboard/content?bno="+vo.getBno();
+	public String modify(@ModelAttribute("article") FreeBoardVO vo) {
+		return "freeboard/freeModify";
 	}
 	
-	//글 삭제
+	//글 수정 처리
+	@PostMapping("/update")
+	public String update(FreeBoardVO vo) {
+		service.update(vo);
+		return "redirect:/freeboard/content?bno=" + vo.getBno();
+	}
+	
+	//글 삭제 처리
 	@PostMapping("/delete")
 	public String delete(int bno) {
 		service.delete(bno);
 		return "redirect:/freeboard/freeList";
 	}
+	
 }
 
 
