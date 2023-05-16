@@ -20,12 +20,12 @@
 		Where bno = #{bno}
 	</select>
 	
-	<update id="updateTest">
-		Update freeboard set title = #{title} , content = #{content}
+	<update id="update">
+		Update freeboard set title = #{title}, content = #{content}, update_date = current_timestamp
 		where bno = #{bno}
 	</update>
 	
-	<delete id="deleteTest">
+	<delete id="delete">
 		Delete from freeboard 
 		Where bno = #{bno}
 	</delete>
