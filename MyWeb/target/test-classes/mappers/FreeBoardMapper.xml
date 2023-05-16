@@ -9,5 +9,29 @@
 		(title, writer, content)
 		VALUES(#{title}, #{writer}, #{content})
 	</insert>
+	
+	<select id="getList" resultType ="board">
+		Select * from freeboard
+		order by bno desc
+	</select>
+	
+	<select id="getContent" resultType ="board">
+		Select * from freeboard
+		Where bno = #{bno}
+	</select>
+	
+	<update id="updateTest">
+		Update freeboard set title = #{title} , content = #{content}
+		where bno = #{bno}
+	</update>
+	
+	<delete id="deleteTest">
+		Delete from freeboard 
+		Where bno = #{bno}
+	</delete>
 
 </mapper>
+
+
+
+
