@@ -45,7 +45,7 @@
                             	<tr>
                             		<td>${vo.bno}</td>
 	                            	<td>
-	                            		<a href="${pageContext.request.contextPath}/freeboard/content?bno=${vo.bno}">${vo.title}</a>
+	                            		<a href="${pageContext.request.contextPath}/freeboard/content/${vo.bno}">${vo.title}</a>
 	                            	</td>
 	                            	<td>${vo.writer}</td>
 	                            	<td>
