@@ -12,6 +12,9 @@ public interface IFreeBoardMapper {
 		
 		//글 목록
 		List<FreeBoardVO> getList(PageVO vo);
+	
+		//총 게시물 수 구하기
+		int getTotal(PageVO vo);
 		
 		//상세보기
 		FreeBoardVO getContent(int bno);
@@ -22,5 +25,4 @@ public interface IFreeBoardMapper {
 		//삭제
 		void delete(int bno);
 
-		int getTotal();
 }

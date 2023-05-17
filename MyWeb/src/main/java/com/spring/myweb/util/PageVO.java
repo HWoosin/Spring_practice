@@ -12,6 +12,10 @@ public class PageVO {
 	private int pageNum;
 	private int cpp;
 	
+	//검색에 필요한 필드추가.
+	private String keyword;
+	private String condition;
+	
 	public PageVO() {
 		this.pageNum = 1;
 		this.cpp = 10;

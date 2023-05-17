@@ -17,18 +17,18 @@
                     <hr>
                     
                     <!--form select를 가져온다 -->
-                    <form>
-		    <div class="search-wrap">
-                       <button type="button" class="btn btn-info search-btn">검색</button>
-                       <input type="text" class="form-control search-input">
-                       <select class="form-control search-select">
-                            <option>제목</option>
-                            <option>내용</option>
-                            <option>작성자</option>
-                            <option>제목+내용</option>
-                       </select>
-                    </div>
-		    </form>
+		        <form action="<c:url value ='/freeboard/freeList' />">
+				    <div class="search-wrap">
+		                       <button type="submit" class="btn btn-info search-btn">검색</button>
+		                       <input type="text" name="keyword" class="form-control search-input" value="${pc.paging.keyword}">
+		                       <select name="condition" class="form-control search-select">
+		                            <option value="title" ${pc.paging.condition == 'title' ? 'selected': ''}>제목</option>
+		                            <option value="content" ${pc.paging.condition == 'content' ? 'selected': ''}>내용</option>
+		                            <option value="writer" ${pc.paging.condition == 'writer' ? 'selected': ''}>작성자</option>
+		                            <option value="titleContent" ${pc.paging.condition == 'titleContent' ? 'selected': ''}>제목+내용</option>
+		                       </select>
+		                    </div>
+				</form>
                    
                     <table class="table table-bordered">
                         <thead>
@@ -41,11 +41,12 @@
                             </tr>
                         </thead>
                         <tbody>
+                        
                             <c:forEach var="vo" items="${boardList}">
                             	<tr>
                             		<td>${vo.bno}</td>
 	                            	<td>
-	                            		<a href="${pageContext.request.contextPath}/freeboard/content/${vo.bno}">${vo.title}</a>
+	                            		<a href="${pageContext.request.contextPath}/freeboard/content/${vo.bno}?pageNum=${pc.paging.pageNum}&cpp=${pc.paging.cpp}&keyword=${pc.paging.keyword}&condition=${pc.paging.condition}">${vo.title}</a>
 	                            	</td>
 	                            	<td>${vo.writer}</td>
 	                            	<td>
@@ -64,7 +65,7 @@
 
 
                     <!--페이지 네이션을 가져옴-->
-		    <form action="${pageContext.request.contextPath}/freeboard/freeList" name="pageForm">
+		    <form action="${pageContext.request.contextPath}/freeboard/freeList?pageNum=${pc.paging.pageNum}&cpp=${pc.paging.cpp}" name="pageForm">
                     <div class="text-center">
                     <hr>
                     <ul id="pagination" class="pagination pagination-sm">
@@ -85,7 +86,9 @@
 
                     <input type="hidden" name="pageNum" value="${pc.paging.pageNum}">
                     <input type="hidden" name="cpp" value="${pc.paging.cpp}">
-
+                    <input type="hidden" name="keyword" value="${pc.paging.keyword}">
+                    <input type="hidden" name="condition" value="${pc.paging.condition}">
+					
 		    </form>
 
                 </div>
