@@ -34,8 +34,26 @@ CREATE TABLE freeboard(
 );
 select * from freeboard;
 
-delete from freeboard where bno =7;
+delete from freeboard;
 
 create user 'spring'@localhost identified by 'spring';
 
 grant all privileges on spring.* to spring@localhost;
+
+select * from freeboard
+order by bno desc
+limit 0, 20;
+
+create table users (
+	user_id varchar(50) primary key,
+    user_pw varchar(50) not null,
+    user_name varchar(50) not null,
+    user_phone1 varchar(50),
+    user_phone2 varchar(50),
+    user_email1 varchar(50),
+    user_email2 varchar(50),
+    addr_basic varchar(300),
+    add_detail varchar(300),
+    addr_zip_num varchar(50),
+    reg_date datetime default current_timestamp
+);
