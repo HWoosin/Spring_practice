@@ -13,6 +13,12 @@
 	<select id="getList" resultType ="board">
 		Select * from freeboard
 		order by bno desc
+		limit #{pageStart}, #{cpp}
+	</select>
+	
+	<select id="getTotal" resultType ="int">
+		Select count(*)
+		from freeboard
 	</select>
 	
 	<select id="getContent" resultType ="board">
