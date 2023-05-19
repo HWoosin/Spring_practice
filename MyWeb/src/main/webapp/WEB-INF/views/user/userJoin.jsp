@@ -124,6 +124,10 @@
                 alert('아이디는 필수값입니다');
                 return;
             }
+            if(!idFlag){
+                alert('똑바로 쓰라고요ㅋ');
+                return;
+            }
             /*
             //아이디 중복확인 비동기 요청 준비
             const xhr = new XMLHttpRequest();
