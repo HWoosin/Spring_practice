@@ -202,7 +202,10 @@
         
         console.log('완성된 email:' + email);   
         fetch('${pageContext.request.contextPath}/user/mailCheck?email='+email)
-            .then()
+            .then(res => res.text())
+            	.then(data => {
+            		console.log('인증번호: '+data);
+            	})
     }
 
 
