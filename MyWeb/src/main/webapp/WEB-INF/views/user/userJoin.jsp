@@ -110,7 +110,7 @@
 </section>
 
 <%@ include file="../include/footer.jsp" %>
-
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
 
         let code = ''; //이메일 전송 인증번호 저장을 위한 변수
