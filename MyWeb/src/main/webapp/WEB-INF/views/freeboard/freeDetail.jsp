@@ -58,30 +58,31 @@
         </div>
         </section>
         
+        <!-- 댓글 영역 시작부분 -->
         <section style="margin-top: 80px;">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-md-9 write-wrap">
                         <form class="reply-wrap">
                             <div class="reply-image">
-                                <img src="../resources/img/profile.png">
+                                <img src="${pageContext.request.contextPath}/img/profile.png">
                             </div>
                             <!--form-control은 부트스트랩의 클래스입니다-->
 	                    <div class="reply-content">
-	                        <textarea class="form-control" rows="3"></textarea>
+	                        <textarea class="form-control" rows="3" id="reply"></textarea>
 	                        <div class="reply-group">
 	                              <div class="reply-input">
-	                              <input type="text" class="form-control" placeholder="이름">
-	                              <input type="password" class="form-control" placeholder="비밀번호">
+		                              <input type="text" class="form-control" id="replyId" placeholder="이름">
+		                              <input type="password" class="form-control" id="replyPw" placeholder="비밀번호">
 	                              </div>
 	                              
-	                              <button type="button" class="right btn btn-info">등록하기</button>
+	                              <button type="button" id="replyRegist" class="right btn btn-info">등록하기</button>
 	                        </div>
 	
 	                    </div>
                         </form>
 
-                        <!--여기에접근 반복-->
+                        <!--여기에 접근 반복-->
                         <div id="replyList">
                         <div class='reply-wrap'>
                             <div class='reply-image'>
@@ -133,5 +134,12 @@
 	
 	<%@ include file="../include/footer.jsp" %>
 	
+	<script>
+
+        window.onload = function(){
+
+        }//window.onload
+
+    </script>
 	
 	
