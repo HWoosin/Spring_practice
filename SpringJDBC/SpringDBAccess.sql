@@ -46,14 +46,44 @@ limit 0, 20;
 
 create table users (
 	user_id varchar(50) primary key,
-    user_pw varchar(50) not null,
+    user_pw varchar(100) not null,
     user_name varchar(50) not null,
     user_phone1 varchar(50),
     user_phone2 varchar(50),
     user_email1 varchar(50),
     user_email2 varchar(50),
     addr_basic varchar(300),
-    add_detail varchar(300),
+    addr_detail varchar(300),
     addr_zip_num varchar(50),
     reg_date datetime default current_timestamp
 );
+use spring;
+delete from users where user_id =' ';
+drop table user;
+select * from users;
+select * from users where user_id = '321321';
+
+select 
+	user_name, user_phone1, user_phone2, user_email1, user_email2, 
+    addr_basic, addr_detail, addr_zip_num,
+    f.bno, f.title, f.reg_date
+from users u 
+left join freeboard f on u.user_id = f.writer
+where u.user_id = 'abc1234'
+order by f.bno desc
+limit 0, 10;
+
+create table freereply(
+	rno int primary key auto_increment,
+    bno int,
+    reply varchar(1000),
+    reply_id varchar(50),
+    reply_pw varchar(50),
+    replay_date datetime default current_timestamp,
+    update_date datetime default null,
+    
+    constraint reply_bno_fk foreign key 
+    (bno) references freeboard(bno) on delete cascade #원본 글이 지워져도 댓글이 지워지기 가능하게끔
+);
+
+
