@@ -138,6 +138,53 @@
 
         window.onload = function(){
 
+            document.getElementById('replyRegist').onclick = () =>{
+                const bno = '${article.bno}'; //현재 게시글 번호
+                const reply = document.getElementById('reply').value;
+                const replyId = document.getElementById('replyId').value;
+                const replyPw =document.getElementById('replyPw').value;
+
+                if(reply === '' || replyId === '' || replyPw === ''){
+                    alert('이름, 비밀번호, 내용을 입력하세요!');
+                    return;
+                }
+
+                
+                const reqObj = {
+                    method: 'post',
+                    headers: {
+                        'Content-Type':'application/json'
+                    },
+                    body: JSON.stringify({
+                        'bno' : bno,
+                        'reply' : reply,
+                        'replyId' : replyId,
+                        'replyPw' : replyPw
+                    })
+                };
+                fetch('${pageContext.request.contextPath}/reply/regist',reqObj)
+                    .then(res => res.text())
+                    .then(data => {
+                        console.log('통신성공!:'+data);
+                        document,getElementById('reply').value = ''; //텍스트 비워주기
+                        document,getElementById('replyId').value = ''; //텍스트 비워주기
+                        document,getElementById('replyPw').value = ''; //텍스트 비워주기
+                        //등록완료 후 댓글 목록 함수를 호출해서 비동기식으로 목록 표현.
+                        getList();
+                    });
+            }//댓글 등록 이벤트 끝
+
+            //댓글목록을 가져올 함수
+            //getList의 매개값으로 뭘 줄거냐?
+            //요청된 페이지 번호와, 화면을 리셋할 것인지의 여부를 bool 타입의 reset으로 받는다.
+            //(페이지가 그대로 머물면서 댓글이 밑에 계속 쌓이기 때문에, 상황에 따라서
+            //페이지를 리셋해서 새롭게 그려낼 것인지, 누적해서 쌓을 것인지의 여부를 판단)
+            function getList(pageNum, reset) {
+                const bno = '${article.bno}'; //게시글 번호
+                //get방식으로 댓글 목록을 요청(비동기)
+                fetch('${pageContext.request.contextPath}/reply/getList/'+bno+'/'+pageNum)
+            }
+
         }//window.onload
 
     </script>
