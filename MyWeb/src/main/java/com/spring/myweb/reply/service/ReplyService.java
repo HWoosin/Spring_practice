@@ -17,11 +17,12 @@ public class ReplyService implements IReplyService {
 
 	@Autowired
 	private IReplyMapper mapper;
+	@Autowired
 	private BCryptPasswordEncoder encoder;
 	
 	@Override
 	public void replyRegist(ReplyVO vo) {
-		vo.setReply(encoder.encode(vo.getReplyPw()));
+		vo.setReplyPw(encoder.encode(vo.getReplyPw()));
 		mapper.replyRegist(vo);
 	}
 
@@ -34,7 +35,8 @@ public class ReplyService implements IReplyService {
 		
 		Map<String, Object> data = new HashMap<>();
 		data.put("paging", vo); //페이징 쿼리를 위한 pageNum과 cpp
-		data.put("bno", bno); //몇번글의 댓글을 가져올지에 대한 정보
+		data.put("bno", bno); //몇 번 글의 댓글을 가져올지에 대한 정보
+		
 		return mapper.getList(data);
 	}
 
@@ -44,21 +46,20 @@ public class ReplyService implements IReplyService {
 	}
 
 	@Override
-	public boolean pwCheck() {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean pwCheck(ReplyVO vo) {
+		
+		String dbPw = mapper.pwCheck(vo.getRno());
+		return encoder.matches(vo.getReplyPw(), dbPw);
 	}
 
 	@Override
 	public void update(ReplyVO vo) {
-		// TODO Auto-generated method stub
-
+		mapper.update(vo);
 	}
 
 	@Override
 	public void delete(int rno) {
-		// TODO Auto-generated method stub
-
+		mapper.delete(rno);
 	}
 
 }
