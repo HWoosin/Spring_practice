@@ -41,7 +41,9 @@
 	</insert>
 	
 	<select id="getList" resultType ="board">
-		Select * from freeboard
+		Select f.*, r.replyCnt from freeboard f
+		left join (select bno,count(*)as replyCnt from freereply group by bno) r
+		on f.bno = r.bno
 		<include refid="search" />
 		order by bno desc
 		limit #{pageStart}, #{cpp}
@@ -68,6 +70,7 @@
 		Delete from freeboard 
 		Where bno = #{bno}
 	</delete>
+	
 
 </mapper>
 

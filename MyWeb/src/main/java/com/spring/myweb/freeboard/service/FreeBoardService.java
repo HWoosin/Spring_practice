@@ -45,5 +45,5 @@ public class FreeBoardService implements IFreeBoardService {
 	public void delete(int bno) {
 		mapper.delete(bno);
 	}
-
+	
 }
