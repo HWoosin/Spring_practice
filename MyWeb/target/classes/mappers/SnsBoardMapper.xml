@@ -12,4 +12,9 @@
 		(#{writer}, #{uploadPath}, #{fileLoca}, #{fileName}, #{fileRealName}, #{content})
 	</insert>
 	
+	<select id="getList" resultType="sns">
+		select * from snsboard
+		order by bno desc
+		limit #{pageStart}, #{cpp}
+	</select>
 </mapper>
