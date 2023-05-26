@@ -17,4 +17,15 @@
 		order by bno desc
 		limit #{pageStart}, #{cpp}
 	</select>
+	
+	<select id="getDetail" resultType = "sns">
+		select * from snsboard
+		where bno = #{bno}
+	
+	</select>
+	
+	<delete id="delete">
+		delete from snsboard
+		where bno = #{bno}
+	</delete>
 </mapper>
