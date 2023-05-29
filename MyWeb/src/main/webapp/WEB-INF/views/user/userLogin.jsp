@@ -22,6 +22,11 @@
                             <button type="button" id="LoginBtn" class="btn btn-info btn-block">로그인</button>
                             <button type="button" id="joinBtn" class="btn btn-primary btn-block">회원가입</button>
                          </div>
+                          <div class="col-lg-12 text-center mt-3">
+                         	<button type="button" onclick="location.href='${urlKakao}'">
+                         		<img alt="카카오로그인" src="${pageContext.request.contextPath}/img/kakao_login_medium_narrow.png">
+                         	</button>
+                         </div>
                     </form>                
                 </div>
             </div>
