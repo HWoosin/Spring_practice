@@ -288,7 +288,6 @@
         if(document.getElementById('userPw').value != document.getElementById('pwConfirm').value){
             alert('비밀번호 확인란을 확인하세요!');
             return;
-            z
         }
         if(document.getElementById('userName').value === ''){
             alert('이름은 필수값 입니다.');
